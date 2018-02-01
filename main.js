@@ -45,7 +45,9 @@ app.get('/recipes/:id', function(req, res) {
 })
 
 app.post('/recipes', function(req, res) {
-    Recipe.create(req.body)
+    Recipe.create(req.body, function(err, recipe){
+        res.json(recipe)
+    })
 })
 
 // listen to requests on PORT 3000
