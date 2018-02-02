@@ -24,7 +24,8 @@ app.use(bodyParser.urlencoded({
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-// routes
+// ROUTES
+// To list all recipes
 app.get('/', function(req, res){
     res.render('index')
 })
@@ -34,6 +35,10 @@ app.get('/recipes', function(req, res) {
     })
 })
 
+// Display a form to add a recipe bookmark
+
+
+// Show details about a specific bookmarked recipe
 app.get('/recipes/:id', function(req, res) {
     Recipe.findById(req.params.id, function(err, recipe) {
         if(err) {      // to handle errs...
@@ -44,11 +49,32 @@ app.get('/recipes/:id', function(req, res) {
      })              // res.send("Profile page for recipe: " + req.params.id)
 })
 
+// Add a new recipe bookmark
 app.post('/recipes', function(req, res) {
     Recipe.create(req.body, function(err, recipe){
         res.json(recipe)
     })
 })
+
+// Update an existing recipe - arguments: the id, the data, {new: true} 
+// to give back the latest recipe, and the callback function
+app.patch('/recipes/:id/edit', function(req, res) {
+    Recipe.findByIdAndUpdate(req.params.id, {tools: "Recipe"}, {new: true}, function(err, updatedRecipe) {
+        if(err) return console.log(err)
+        res.json({message: "Recipe updated!", recipe: updatedRecipe})
+    })
+})
+
+// Delete an existing recipe
+app.delete('/recipes/:id', function(req, res){
+
+})
+
+
+// Recipe.findByIdAndRemove("Recipe", function(err, recipe) {
+//     if(err) {return console.log(err) }
+//     console.log("Recipe removed!")
+// })
 
 // listen to requests on PORT 3000
 app.listen(3000, function(err) {
