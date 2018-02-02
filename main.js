@@ -30,8 +30,10 @@ app.get('/', function(req, res){
     res.render('index')
 })
 app.get('/recipes', function(req, res) {
-    Recipe.find({}, function(err, recipes) {
-        res.json(recipes)
+    console.log('recipes')
+    Recipe.find({}, function(err, allRecipes) {
+        if(err) console.log(err)
+        res.render('recipes', {allRecipes})
     })
 })
 
