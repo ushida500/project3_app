@@ -66,15 +66,12 @@ app.patch('/recipes/:id/edit', function(req, res) {
 })
 
 // Delete an existing recipe
-app.delete('/recipes/:id', function(req, res){
-
+app.delete('/recipes/:id', function(req, res) {
+    Recipe.findByIdAndRemove(req.params.id, function(err, deletedRecipe) {
+        if(err) return console.log(err)
+        res.json({message: "Recipe removed!", recipe: deletedRecipe})
+    })
 })
-
-
-// Recipe.findByIdAndRemove("Recipe", function(err, recipe) {
-//     if(err) {return console.log(err) }
-//     console.log("Recipe removed!")
-// })
 
 // listen to requests on PORT 3000
 app.listen(3000, function(err) {
