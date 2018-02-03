@@ -5,7 +5,8 @@ const
     mongoose = require('mongoose'),
     Recipe = require('./model/Recipe.js'),
     path = require('path'),
-    bodyParser = require('body-parser')
+    bodyParser = require('body-parser'),
+    methodOverride = require('method-override')
 
 // connect to Mongo 
 mongoose.connect('mongodb://localhost/recipesdb', function(err) {
@@ -14,6 +15,8 @@ mongoose.connect('mongodb://localhost/recipesdb', function(err) {
 
 // Middleware
 app.use(logger('dev'))
+
+app.use(methodOverride("_method"))
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -38,7 +41,9 @@ app.get('/recipes', function(req, res) {
 })
 
 // Display a form to add a recipe bookmark
-
+app.get('/recipes/new', function(req, res) {
+    res.render('new')
+})
 
 // Show details about a specific bookmarked recipe
 app.get('/recipes/:id', function(req, res) {
@@ -47,14 +52,14 @@ app.get('/recipes/:id', function(req, res) {
             res.json({message: "There was a problem."})
             console.log(err)
         }   else {}
-        res.json(recipe)
+        res.render('recipe', {recipe})
      })              // res.send("Profile page for recipe: " + req.params.id)
 })
 
 // Add a new recipe bookmark
 app.post('/recipes', function(req, res) {
     Recipe.create(req.body, function(err, recipe){
-        res.json(recipe)
+        res.redirect('/recipes/' + recipe.id)
     })
 })
 
@@ -71,7 +76,7 @@ app.patch('/recipes/:id/edit', function(req, res) {
 app.delete('/recipes/:id', function(req, res) {
     Recipe.findByIdAndRemove(req.params.id, function(err, deletedRecipe) {
         if(err) return console.log(err)
-        res.json({message: "Recipe removed!", recipe: deletedRecipe})
+        res.redirect('/recipes')
     })
 })
 

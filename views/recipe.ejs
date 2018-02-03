@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>RecipesUltd.</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <h1>Recipe</h1>
+    <div>
+        <%= recipe.name %>
+    </div>
+    <div>
+        <%= recipe.number %>
+    </div>
+    <div>
+        <%= recipe.ingredients %>
+    </div>
+    <div>
+        <%= recipe.instructions %>
+    </div>
+    <a class= "btn btn-primary" href='/recipes'>Back</a>
+
+    <form action="/recipes/<%= recipe.id %>?_method=DELETE" method=POST><input type="submit" class="btn btn-danger" value="Delete"></form>
+
+
+</body>
+</html>
