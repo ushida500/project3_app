@@ -8,8 +8,10 @@ const
     bodyParser = require('body-parser'),
     methodOverride = require('method-override')
 
+
+require('dotenv').config()
 // connect to Mongo 
-mongoose.connect('mongodb://localhost/recipesdb', function(err) {
+mongoose.connect('mongodb://localhost/recipesdb' || process.env.DATABASE_URL, function(err) {
     console.log(err || "Recipes!")
 })
 

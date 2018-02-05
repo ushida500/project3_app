@@ -8,9 +8,9 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <h1>Recipe</h1>
+    <h1><%= recipe.name %></h1>
     <div>
-        <%= recipe.name %>
+        <img class="card-img-top" src="<%= recipe.url %>" alt="Card image cap" style="width:350px">
     </div>
     <div>
         <%= recipe.number %>
