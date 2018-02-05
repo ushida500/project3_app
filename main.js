@@ -84,6 +84,6 @@ app.delete('/recipes/:id', function(req, res) {
 })
 
 // listen to requests on PORT 3000
-app.listen(3000, function(err) {
+app.listen(process.env.PORT || 3000, function(err) {
     console.log(err || "Recipes server")
 })
