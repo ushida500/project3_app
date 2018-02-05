@@ -11,7 +11,8 @@ const
 
 require('dotenv').config()
 // connect to Mongo 
-mongoose.connect(process.env.DATABASE_URL, function(err) {
+const mongoConnectionString = process.env.DATABASE_URL || 'mongodb://localhost/recipesdb'
+mongoose.connect(mongoConnectionString, function(err) {
     console.log(err || "Recipes!")
 })
 
