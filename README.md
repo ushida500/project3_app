@@ -3,10 +3,10 @@ A new app: RECIPES UNLIMITED
 ![Imgur](https://i.imgur.com/kS4hRAm.png)
 
 This is an app with an architecture, design, and build focused in bookmarking or make a collection of your favorite cooking 
-recipes. Just find it online and use the app to post it. [Find Recipes Unlimited here!](https://ushida500.github.io/project1_thegame/https://boiling-reaches-74723.herokuapp.com/)
+recipes. Just find it online and use the app to post it. [Find Recipes Unlimited here!](https://boiling-reaches-74723.herokuapp.com/)
 
 HOW TO USE THIS APP
-1. Go to [Recipes Unlimited](https://ushida500.github.io/project1_thegame/https://boiling-reaches-74723.herokuapp.com/) 
+1. Go to [Recipes Unlimited](https://boiling-reaches-74723.herokuapp.com/) 
 
 2. Use the button "New Recipe" to enter and create your first recipe and the next ones.
 
